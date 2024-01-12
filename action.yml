@@ -1,0 +1,39 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: nexusiq-sca-scan
+inputs:
+  server-url:
+    required: true
+  username:
+    required: true
+  password:
+    required: true
+  token:
+    required: true
+  language:
+    required: false
+runs:
+  using: composite
+  steps:
+    - id: run-orchestrator
+      name: nexusiq
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-97a2f90ccb6219e7fae32c432d7e8d36d5b48672
+      shell: bash
+      env:
+        CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"${{ inputs.password }}\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"nexusiq\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SCA\"}}' 
+        RUN_ID: ${{ cloudbees.run_id }}
+        STEP_ID: ${{ step.internal.id }}
+        JOB_ID: ${{ job.id }}
+        DNS_URL: ${{ cloudbees.api.url }}
+        JWT_TOKEN: ${{ cloudbees.api.token }}
+      run: |
+        set -x
+        echo "RUN ID: ${{ cloudbees.run_id }}"
+        echo "Job ID: ${{ job.id }}"
+        echo "Step ID: ${{ step.internal.id }}"      
+        cd /app/
+        /bin/bash -c "java -jar /app/nexus-iq-server.jar & while ! nc -z localhost 5001; do sleep 1; done && /app/orchestrator -scanConfig \"${CONFIG_JSON}\" execute-analyser && exit"
+
+
+       
+        
