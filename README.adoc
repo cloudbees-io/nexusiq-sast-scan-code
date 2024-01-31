@@ -76,7 +76,7 @@ In your YAML file, add:
 ----
 
       - name: Scan with Nexus IQ server
-        uses: cloudbees-io/nexusiq-sca-scan-dependency@v1
+        uses: cloudbees-io/nexusiq-sast-scan-code@v1
         with:
           server-url: ${{ vars.SONATYPE_SERVER_URL }}
           username: "sonatype_username"
