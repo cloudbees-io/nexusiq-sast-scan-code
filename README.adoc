@@ -1,6 +1,6 @@
 = Cloudbees action: Scan with Nexus Lifecycle XC
 
-Use this action to scan repositories for dependency vulnerabilities with Nexus Lifecycle XC, delivered via the Nexus IQ server. Nexus Lifecycle XC is a Sonatype product.
+Use this action to perform a SAST scan with Nexus Lifecycle XC, delivered via the Nexus IQ server. Nexus Lifecycle XC is a Sonatype product.
 
 == Inputs
 
