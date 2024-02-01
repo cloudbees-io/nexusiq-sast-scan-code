@@ -60,8 +60,20 @@ Refer to <<_supported_languages>>.
 | JavaScript
 | `LANGUAGE_JS`
 
+| Maven
+| `LANGUAGE_MAVEN`
+
+| NodeJS
+| `LANGUAGE_NODEJS`
+
+| NPM
+| `LANGUAGE_NPM`
+
 | PHP
 | `LANGUAGE_PHP`
+
+| Python
+| `LANGUAGE_PYTHON`
 
 | Ruby
 | `LANGUAGE_RUBY`
