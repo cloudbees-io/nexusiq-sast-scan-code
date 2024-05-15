@@ -17,7 +17,7 @@ runs:
   steps:
     - id: run-orchestrator
       name: nexusiq
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-d0abd18b327bc600d2f7fdf2a0fd1ebf071f3a61
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-89aedd1a063b0186c83011877285af4795e54167
       shell: bash
       env:
         CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"${{ inputs.password }}\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"nexusiq\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SAST\"}}' 
