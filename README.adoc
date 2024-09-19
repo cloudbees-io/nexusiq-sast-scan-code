@@ -28,10 +28,10 @@ Use this action to perform a SAST scan with Nexus Lifecycle XC, delivered via th
 | Yes
 | The Sonatype password.
 
-| `token`
+| `org-id`
 | String
 | Yes
-| The Org ID.
+| The Sonatype Org ID.
 
 | `language`
 | String
