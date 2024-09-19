@@ -31,7 +31,7 @@ Use this action to perform a SAST scan with Nexus Lifecycle XC, delivered via th
 | `token`
 | String
 | Yes
-| The Sonatype token.
+| The Org ID.
 
 | `language`
 | String
