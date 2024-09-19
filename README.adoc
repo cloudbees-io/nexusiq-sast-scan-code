@@ -93,7 +93,7 @@ In your YAML file, add:
           server-url: ${{ vars.SONATYPE_SERVER_URL }}
           username: "sonatype_username"
           password: ${{ secrets.SONATYPE_PASSWORD }}
-          token: ${{ secrets.SONATYPE_TOKEN }}
+          token: ${{ secrets.SONATYPE_ORG_ID }}
           language: "LANGUAGE_JAVA"
 
 ----
