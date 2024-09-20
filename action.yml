@@ -8,7 +8,7 @@ inputs:
     required: true
   password:
     required: true
-  token:
+  org-id:
     required: true
   language:
     required: false
@@ -17,10 +17,10 @@ runs:
   steps:
     - id: run-orchestrator
       name: nexusiq
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-393c33e0f2d02c2b0f2c1b5da82f4fc6c21aa65f
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-f9078838c0c61bf32f391fcbe77169fb68e69b34
       shell: bash
       env:
-        CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"${{ inputs.password }}\",\"client_secret\":\"${{ inputs.token }}\",\"toolName\":\"nexusiq\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SAST\"}}' 
+        CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"${{ inputs.password }}\",\"client_secret\":\"${{ inputs.org-id }}\",\"toolName\":\"nexusiq\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SAST\"}}' 
         RUN_ID: ${{ cloudbees.run_id }}
         STEP_ID: ${{ step.internal.id }}
         JOB_ID: ${{ job.id }}
@@ -36,4 +36,5 @@ runs:
 
 
        
+        
         
