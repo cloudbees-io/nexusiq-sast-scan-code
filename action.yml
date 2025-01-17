@@ -17,7 +17,6 @@ runs:
   steps:
     - id: run-orchestrator
       name: nexusiq
-      # uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-8ff236325bad464e435af300ca1e750f9a02255b
       uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-240d030d13f4b9ca3dab1bca3d4801fdba11a7ba
       shell: bash
       env:
