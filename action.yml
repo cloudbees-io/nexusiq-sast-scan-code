@@ -20,7 +20,6 @@ runs:
       uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-240d030d13f4b9ca3dab1bca3d4801fdba11a7ba
       shell: bash
       env:
-        CONFIG_JSON: '{\"metaInfo\":{\"url\":\"${{ inputs.server-url }}\",\"username\":\"${{ inputs.username }}\",\"password\":\"${{ inputs.password }}\",\"client_secret\":\"${{ inputs.org-id }}\",\"toolName\":\"nexusiq\"},\"orchestratorInfo\":{\"assetType\":\"CODE\",\"assetIdentifier\":\"${{ cloudbees.scm.repositoryUrl }}\",\"profileIdentifier\":\"${{ cloudbees.scm.branch }}\",\"language\":\"${{ inputs.language }}\"},\"metaInformation\":{\"actor\":\"SCM-Bot\",\"commit_id\":\"${{ cloudbees.scm.sha }}\",\"tenent_info\":\"NA\",\"scanner_type\":\"SAST\"}}' 
         RUN_ID: ${{ cloudbees.run_id }}
         STEP_ID: ${{ step.internal.id }}
         JOB_ID: ${{ job.id }}
@@ -49,3 +48,8 @@ runs:
 
         cd /app/
         /bin/bash -c "java -jar /app/nexus-iq-server.jar & while ! nc -z localhost 5001; do sleep 1; done && /app/orchestrator -scanConfig \"${CONFIG_JSON}\" execute-analyser && exit"
+
+
+       
+        
+        
