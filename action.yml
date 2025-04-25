@@ -17,7 +17,8 @@ runs:
   steps:
     - id: run-orchestrator
       name: nexusiq
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-ff69357dac5d2e6801e18c7376827efc5136e7e5
+      # latest image
+      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-0fdce1c80026da956b20c02e3ea01b8c3361ada2
       shell: bash
       env:
         RUN_ID: ${{ cloudbees.run_id }}
@@ -30,10 +31,6 @@ runs:
         echo "RUN ID: ${{ cloudbees.run_id }}"
         echo "Job ID: ${{ job.id }}"
         echo "Step ID: ${{ step.internal.id }}"  
-
-        # fetch checkedout repo url and branch into assetIdentifier and profileIdentifier
-        apt-get update
-        apt-get install -y git
 
         assetIdentifier=$(git config --get remote.origin.url)
         currentBranch=$(git branch | grep "*")
@@ -48,8 +45,3 @@ runs:
 
         cd /app/
         /bin/bash -c "java -jar /app/nexus-iq-server.jar & while ! nc -z localhost 5001; do sleep 1; done && /app/orchestrator -scanConfig \"${CONFIG_JSON}\" execute-analyser && exit"
-
-
-       
-        
-        
