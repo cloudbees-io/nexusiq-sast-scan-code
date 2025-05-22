@@ -18,7 +18,7 @@ runs:
     - id: run-orchestrator
       name: nexusiq
       # latest image
-      uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-0fdce1c80026da956b20c02e3ea01b8c3361ada2
+      # uses: docker://public.ecr.aws/l7o7z1g8/actions/nexusiq-actions:main-0fdce1c80026da956b20c02e3ea01b8c3361ada2
       uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/nexusiq-actions:main-de2ea09c8c4c4eff08717c7263c8a876e4ef3013 
       shell: bash
       env:
