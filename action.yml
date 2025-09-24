@@ -18,7 +18,7 @@ runs:
     - id: run-orchestrator
       name: nexusiq
       # latest image
-      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/nexusiq-actions:main-8f1fcc8982b32336b2a869bdfee6786ff35e14b7
+      uses: docker://020229604682.dkr.ecr.us-east-1.amazonaws.com/actions/nexusiq-actions:CBP-21415-eab2d7a936135adf054263e956636d42ce568002
       shell: bash
       env:
         RUN_ID: ${{ cloudbees.run_id }}
